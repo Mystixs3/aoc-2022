@@ -12,19 +12,21 @@ fn main() {
     loop {
         current = input_lines.next();
 
-        if current == None {
-            break;
-        }
-        else if current.unwrap() == "" {
+        if current == None || current.unwrap() == ""{
             if current_elf > best_elf {
                 best_elf = current_elf;
             }
-            current_elf = 0
+            current_elf = 0;
+
+            if current == None {
+                break;
+            }
         }
         else {
             current_elf = current_elf + current.unwrap().parse::<u64>().unwrap();
         }
     }
 
-    println!("{}", best_elf)
+    let answer: u64 = best_elf;
+    println!("{}", answer)
 }
